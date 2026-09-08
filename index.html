@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المدرسة النبوية — Madrasat Nabawiyyah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #efeae0;
+    --bg-alt: #e4dcc8;
+    --ink: #221f1a;
+    --ink-soft: #4a453c;
+    --green: #1f4d3e;
+    --green-dark: #123128;
+    --gold: #a6832e;
+    --gold-light: #c9a227;
+    --rule: rgba(34,31,26,0.16);
+    --maroon: #6b2737;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Cairo', sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  [data-lang="ar"] .lang-en{display:none;}
+  [data-lang="en"] .lang-ar{display:none;}
+  html[dir="ltr"] body{font-family:'Cairo','Inter',sans-serif;}
+
+  h1,h2,h3{margin:0;font-weight:600;}
+  [data-lang="ar"] h1, [data-lang="ar"] h2, [data-lang="ar"] .display{font-family:'Amiri', serif;}
+  [data-lang="en"] h1, [data-lang="en"] h2, [data-lang="en"] .display{font-family:'Cormorant Garamond', serif;}
+
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(239,234,224,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand svg{width:34px;height:34px;flex:none;}
+  .brand-name{font-size:1.15rem;font-weight:600;letter-spacing:0.01em;}
+  [data-lang="ar"] .brand-name{font-family:'Amiri',serif;font-size:1.35rem;}
+  [data-lang="en"] .brand-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;}
+
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:0.98rem;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);position:relative;padding:4px 0;}
+  .nav-links a:hover{color:var(--green);}
+  .nav-links a:focus-visible{outline:2px solid var(--green);outline-offset:3px;}
+
+  .lang-toggle{
+    border:1px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    font-family:'Cairo',sans-serif;
+    font-size:0.85rem;
+    padding:7px 14px;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .lang-toggle:hover{background:var(--ink);color:var(--bg);}
+  .lang-toggle:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
+
+  @media (max-width:720px){
+    .nav-links{display:none;}
+  }
+
+  .hero{
+    position:relative;
+    background:var(--green);
+    color:#f4f0e4;
+    overflow:hidden;
+    padding:96px 0 84px;
+  }
+  .hero .pattern{
+    position:absolute;inset:0;
+    opacity:0.16;
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;text-align:center;}
+  .hero .display{
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    color:#f4f0e4;
+    line-height:1.25;
+  }
+  .hero .sub{
+    margin-top:22px;
+    font-size:1.15rem;
+    color:#d8cfa8;
+    max-width:520px;
+    margin-inline:auto;
+  }
+  .hero .cta{
+    display:inline-block;
+    margin-top:40px;
+    background:var(--gold-light);
+    color:var(--green-dark);
+    text-decoration:none;
+    font-weight:600;
+    padding:13px 30px;
+    border-radius:2px;
+    font-size:0.98rem;
+    letter-spacing:0.01em;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .hero .cta:hover{background:#e0bd52;transform:translateY(-1px);}
+  .hero .cta:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+
+  .hero-line{
+    width:64px;height:2px;background:var(--gold-light);
+    margin:26px auto 0;
+  }
+
+  section{padding:88px 0;}
+  .section-head{max-width:620px;margin-bottom:56px;}
+  [dir="rtl"] .section-head{margin-inline-start:0;}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.6rem);}
+  .section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.02rem;}
+
+  .about{background:var(--bg);}
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
+  }
+  .about-grid p{color:var(--ink-soft);}
+  .about-figures{
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;
+    border-top:1px solid var(--rule);
+    padding-top:28px;margin-top:28px;
+  }
+  .fig-num{font-family:'Amiri',serif;font-size:2.1rem;color:var(--green);}
+  [data-lang="en"] .fig-num{font-family:'Cormorant Garamond',serif;}
+  .fig-label{font-size:0.9rem;color:var(--ink-soft);margin-top:4px;}
+  @media (max-width:800px){.about-grid{grid-template-columns:1fr;}}
+
+  .programs{background:var(--bg-alt);}
+  .program-row{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:36px;
+    padding:30px 0;
+    border-top:1px solid var(--rule);
+  }
+  .program-row:last-child{border-bottom:1px solid var(--rule);}
+  .program-age{
+    font-family:'Amiri',serif;
+    font-size:1.05rem;
+    color:var(--green);
+    padding-top:2px;
+  }
+  [data-lang="en"] .program-age{font-family:'Cormorant Garamond',serif;font-size:1.15rem;}
+  .program-body h3{font-size:1.35rem;margin-bottom:8px;}
+  .program-body p{color:var(--ink-soft);margin:0 0 10px;max-width:620px;}
+  .program-meta{
+    font-size:0.9rem;
+    color:var(--gold);
+    font-weight:600;
+  }
+  @media (max-width:640px){
+    .program-row{grid-template-columns:1fr;gap:8px;}
+  }
+
+  footer{
+    background:var(--green-dark);
+    color:#e7e1cd;
+    padding:64px 0 32px;
+    position:relative;
+  }
+  .footer-top{
+    height:6px;
+    background-image:repeating-linear-gradient(45deg, var(--gold-light) 0 8px, transparent 8px 16px);
+    opacity:0.5;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.3fr 1fr;gap:48px;
+    margin-top:20px;
+  }
+  footer h3{color:#f4f0e4;font-size:1.3rem;margin-bottom:16px;}
+  [data-lang="ar"] footer h3{font-family:'Amiri',serif;}
+  [data-lang="en"] footer h3{font-family:'Cormorant Garamond',serif;}
+  footer p{color:#bcb597;margin:0 0 8px;}
+  .footer-links a{display:block;color:#e7e1cd;text-decoration:none;margin-bottom:10px;}
+  .footer-links a:hover{color:var(--gold-light);}
+  .footer-bottom{
+    margin-top:48px;padding-top:24px;border-top:1px solid rgba(231,225,205,0.15);
+    font-size:0.85rem;color:#8d886e;
+  }
+  @media (max-width:640px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M30 4 L36 22 L54 22 L39 33 L45 51 L30 40 L15 51 L21 33 L6 22 L24 22 Z" stroke="#a6832e" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-name lang-ar">المدرسة النبوية</span>
+      <span class="brand-name lang-en">Madrasat Nabawiyyah</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about" class="lang-ar">عن المدرسة</a>
+      <a href="#about" class="lang-en">About</a>
+      <a href="#programs" class="lang-ar">البرامج</a>
+      <a href="#programs" class="lang-en">Programs</a>
+      <a href="#contact" class="lang-ar">التواصل</a>
+      <a href="#contact" class="lang-en">Contact</a>
+    </div>
+    <button class="lang-toggle" id="langToggle" type="button">EN</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg class="pattern" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <pattern id="star8" width="60" height="60" patternUnits="userSpaceOnUse">
+        <g stroke="#c9a227" stroke-width="1" fill="none">
+          <path d="M30 6 L36 24 L54 24 L39 35 L45 53 L30 42 L15 53 L21 35 L6 24 L24 24 Z"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="400" height="400" fill="url(#star8)"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <h1 class="display lang-ar">المدرسة النبوية</h1>
+    <h1 class="display lang-en">Madrasat Nabawiyyah</h1>
+    <div class="hero-line"></div>
+    <p class="sub lang-ar">تعليم القرآن الكريم واللغة العربية والعلوم الإسلامية لأبنائنا في بيئة إيمانية هادئة.</p>
+    <p class="sub lang-en">Teaching Qur'an, Arabic, and Islamic studies to our children in a calm, faith-centered environment.</p>
+    <a href="#programs" class="cta lang-ar">تصفح البرامج</a>
+    <a href="#programs" class="cta lang-en">View Our Programs</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:0;">
+        <h2 class="lang-ar">من نحن</h2>
+        <h2 class="lang-en">Who We Are</h2>
+        <p class="lang-ar">تأسست المدرسة النبوية لتكون بيتاً ثانياً لأبنائنا، يتعلمون فيه كتاب الله ولغة الضاد وأصول دينهم على يد معلمين مؤهلين، ضمن جدول يراعي أعمارهم واحتياجاتهم.</p>
+        <p class="lang-en">Madrasat Nabawiyyah was founded to be a second home for our children — a place to learn the Qur'an, the Arabic language, and the fundamentals of their faith, guided by qualified teachers on a schedule built around their age and needs.</p>
+      </div>
+    </div>
+    <div class="about-figures">
+      <div>
+        <div class="fig-num">6</div>
+        <div class="fig-label lang-ar">برامج دراسية</div>
+        <div class="fig-label lang-en">Programs offered</div>
+      </div>
+      <div>
+        <div class="fig-num">5–16</div>
+        <div class="fig-label lang-ar">الفئة العمرية</div>
+        <div class="fig-label lang-en">Age range served</div>
+      </div>
+      <div>
+        <div class="fig-num">٢</div>
+        <div class="fig-label lang-ar lang-en" style="display:block">
+          <span class="lang-ar">لغتا التدريس</span>
+          <span class="lang-en">Languages of instruction</span>
+        </div>
+      </div>
+      <div>
+        <div class="fig-num">6</div>
+        <div class="fig-label lang-ar">أيام أسبوعياً</div>
+        <div class="fig-label lang-en">Days a week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="lang-ar">برامجنا الدراسية</h2>
+      <h2 class="lang-en">Our Programs & Classes</h2>
+      <p class="lang-ar">برامج مصممة حسب العمر والمستوى، من التمهيدي إلى المستوى المتقدم.</p>
+      <p class="lang-en">Classes structured by age and level, from early foundations through advanced study.</p>
+    </div>
+
+    <div class="program-row">
+      <div class="program-age lang-ar">٦ – ١٦ سنة</div>
+      <div class="program-age lang-en">Ages 6–16</div>
+      <div class="program-body">
+        <h3 class="lang-ar">تحفيظ القرآن الكريم</h3>
+        <h3 class="lang-en">Qur'an Memorization (Hifz)</h3>
+        <p class="lang-ar">حلقات يومية لحفظ ومراجعة القرآن الكريم بإشراف معلمين مجازين، مع متابعة فردية لمستوى كل طالب.</p>
+        <p class="lang-en">Daily halaqas for memorizing and reviewing the Qur'an with certified teachers, with individual tracking for each student's progress.</p>
+        <div class="program-meta">
+          <span class="lang-ar">يومياً · بعد العصر</span>
+          <span class="lang-en">Daily · After Asr</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program-row">
+      <div class="program-age lang-ar">٨ سنوات فأكثر</div>
+      <div class="program-age lang-en">Ages 8+</div>
+      <div class="program-body">
+        <h3 class="lang-ar">التجويد والتلاوة</h3>
+        <h3 class="lang-en">Tajweed & Recitation</h3>
+        <p class="lang-ar">دراسة أحكام التجويد وتطبيقها عملياً، مع تصحيح مستمر للتلاوة وتحسين مخارج الحروف.</p>
+        <p class="lang-en">Study of tajweed rules with hands-on application, ongoing recitation correction, and pronunciation practice.</p>
+        <div class="program-meta">
+          <span class="lang-ar">مرتين أسبوعياً</span>
+          <span class="lang-en">Twice weekly</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program-row">
+      <div class="program-age lang-ar">جميع الأعمار</div>
+      <div class="program-age lang-en">All ages</div>
+      <div class="program-body">
+        <h3 class="lang-ar">اللغة العربية</h3>
+        <h3 class="lang-en">Arabic Language</h3>
+        <p class="lang-ar">من التأسيس إلى المستوى المتقدم: قراءة وكتابة وقواعد، لمن يتحدث العربية ولمن يتعلمها كلغة إضافية.</p>
+        <p class="lang-en">From foundations to advanced level — reading, writing, and grammar — for native speakers and new learners alike.</p>
+        <div class="program-meta">
+          <span class="lang-ar">ثلاث مرات أسبوعياً</span>
+          <span class="lang-en">Three times weekly</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program-row">
+      <div class="program-age lang-ar">١٠ سنوات فأكثر</div>
+      <div class="program-age lang-en">Ages 10+</div>
+      <div class="program-body">
+        <h3 class="lang-ar">الدراسات الإسلامية</h3>
+        <h3 class="lang-en">Islamic Studies</h3>
+        <p class="lang-ar">العقيدة والفقه والسيرة النبوية، بأسلوب مبسط يربط الطالب بواقعه ويرسخ الفهم الصحيح.</p>
+        <p class="lang-en">Aqeedah, Fiqh, and the Prophetic Seerah, taught in an accessible style connecting students to their daily lives.</p>
+        <div class="program-meta">
+          <span class="lang-ar">مرة أسبوعياً</span>
+          <span class="lang-en">Once weekly</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program-row">
+      <div class="program-age lang-ar">٥ – ١٢ سنة</div>
+      <div class="program-age lang-en">Ages 5–12</div>
+      <div class="program-body">
+        <h3 class="lang-ar">برنامج نهاية الأسبوع</h3>
+        <h3 class="lang-en">Weekend Youth Program</h3>
+        <p class="lang-ar">برنامج مكثف يجمع القرآن واللغة والأخلاق في أجواء تفاعلية مناسبة للأطفال.</p>
+        <p class="lang-en">A concentrated weekend track combining Qur'an, language, and character-building in an interactive, child-friendly setting.</p>
+        <div class="program-meta">
+          <span class="lang-ar">السبت والأحد</span>
+          <span class="lang-en">Saturday & Sunday</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="program-row">
+      <div class="program-age lang-ar">للبالغين</div>
+      <div class="program-age lang-en">Adults</div>
+      <div class="program-body">
+        <h3 class="lang-ar">الدراسة المسائية للكبار</h3>
+        <h3 class="lang-en">Adult Evening Classes</h3>
+        <p class="lang-ar">قرآن ولغة عربية للكبار الراغبين في بدء أو استكمال رحلتهم التعليمية بعد أوقات العمل.</p>
+        <p class="lang-en">Qur'an and Arabic for adults looking to begin or continue their learning journey after work hours.</p>
+        <div class="program-meta">
+          <span class="lang-ar">مساءً · مرتين أسبوعياً</span>
+          <span class="lang-en">Evenings · Twice weekly</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-top"></div>
+  <div class="wrap footer-grid">
+    <div>
+      <h3 class="lang-ar">المدرسة النبوية</h3>
+      <h3 class="lang-en">Madrasat Nabawiyyah</h3>
+      <p class="lang-ar">15 شارع لاديبو، أوكو أوبا، أجيجي، ولاية لاغوس</p>
+      <p class="lang-en">15 Ladipo Street, Oko Oba, Agege, Lagos State</p>
+      <p>alkawtharinur321@gmail.com</p>
+      <p>08020639550, 08166967291</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about" class="lang-ar">عن المدرسة</a>
+      <a href="#about" class="lang-en">About</a>
+      <a href="#programs" class="lang-ar">البرامج</a>
+      <a href="#programs" class="lang-en">Programs</a>
+      <a href="#contact" class="lang-ar">التواصل</a>
+      <a href="#contact" class="lang-en">Contact</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span class="lang-ar">© المدرسة النبوية. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">© Madrasat Nabawiyyah. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('langToggle');
+  const html = document.documentElement;
+  btn.addEventListener('click', () => {
+    const isAr = html.getAttribute('data-lang') === 'ar';
+    if(isAr){
+      html.setAttribute('data-lang','en');
+      html.setAttribute('lang','en');
+      html.setAttribute('dir','ltr');
+      btn.textContent = 'AR';
+    } else {
+      html.setAttribute('data-lang','ar');
+      html.setAttribute('lang','ar');
+      html.setAttribute('dir','rtl');
+      btn.textContent = 'EN';
+    }
+  });
+</script>
+
+</body>
+</html>
